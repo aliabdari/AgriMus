@@ -45,14 +45,14 @@ def aggregation_func(mod, x):
 
 if __name__ == '__main__':
     museums = json.load(open('../final_museums.json', 'r'))
-    base_features_list = ['open_clip_features', 'mobile_clip_features', 'blip_features']
+    base_features_list = ['vivit_features', 'videomae_features', 's3d_features']
 
     base_features = base_features_list[1]
 
-    frame_video_room_representation = [('Mean', 'Mean'), ('Median', 'Mean'), ('Max', 'Mean')]
+    video_room_representation = [('Mean', 'Mean'), ('Median', 'Mean'), ('Max', 'Mean')]
 
-    for fvr in tqdm(frame_video_room_representation):
-        path_tensors = f'{base_features}/frames'
+    for fvr in tqdm(video_room_representation):
+        path_tensors = f'{base_features}/videos'
         path_output = f'{base_features}/museums_{fvr[0]}_{fvr[1]}'
         os.makedirs(path_output, exist_ok=True)
 
@@ -61,7 +61,8 @@ if __name__ == '__main__':
             for idx_r, r in enumerate(m['rooms']):
                 features_rooms = torch.zeros(len(m['rooms'][r]), 768)
                 for idx_v, v in enumerate(m['rooms'][r]):
-                    features = torch.load(path_tensors + os.sep + v + '.pt', weights_only=True)
-                    features_rooms[idx_v, :] = aggregation_func(fvr[0], features)
-                features_museum[idx_r, :] = aggregation_func(fvr[1], features_rooms)
-            torch.save(aggregation_func(fvr[2], features_museum), path_output + os.sep + 'museum_' + str(idx_m) + '.pt')
+                    # features = torch.load(path_tensors + os.sep + v + '.pt', weights_only=True)
+                    # features_rooms[idx_v, :] = aggregation_func(fvr[0], features)
+                    features_rooms[idx_v, :] = torch.load(path_tensors + os.sep + v + '.pt', weights_only=True)
+                features_museum[idx_r, :] = aggregation_func(fvr[0], features_rooms)
+            torch.save(aggregation_func(fvr[1], features_museum), path_output + os.sep + 'museum_' + str(idx_m) + '.pt')
