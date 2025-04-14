@@ -79,9 +79,9 @@ if __name__ == '__main__':
     ground_truth = json.load(open(path_ground_truth, 'r'))
     ground_truth = create_rank(ground_truth)
 
-    base_features_list = ['vivit_features', 'videomae_features', 's3d_features']
+    base_features_list = ['vivit_features', 'videomae_features', 'clip4clip_features']
 
-    base_features = [base_features_list[0]]
+    base_features = [base_features_list[2]]
     print('base features', base_features)
 
     video_room_representation = [('Mean', 'Mean'), ('Median', 'Mean'), ('Max', 'Mean')]
