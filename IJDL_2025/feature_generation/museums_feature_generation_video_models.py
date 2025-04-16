@@ -45,9 +45,9 @@ def aggregation_func(mod, x):
 
 if __name__ == '__main__':
     museums = json.load(open('../final_museums.json', 'r'))
-    base_features_list = ['vivit_features', 'videomae_features', 's3d_features']
+    base_features_list = ['vivit_features', 'videomae_features', 'clip4clip_features']
 
-    base_features = base_features_list[1]
+    base_features = base_features_list[2]
 
     video_room_representation = [('Mean', 'Mean'), ('Median', 'Mean'), ('Max', 'Mean')]
 
@@ -57,9 +57,9 @@ if __name__ == '__main__':
         os.makedirs(path_output, exist_ok=True)
 
         for idx_m, m in enumerate(museums):
-            features_museum = torch.zeros(len(m['rooms']), 768)
+            features_museum = torch.zeros(len(m['rooms']), 512)
             for idx_r, r in enumerate(m['rooms']):
-                features_rooms = torch.zeros(len(m['rooms'][r]), 768)
+                features_rooms = torch.zeros(len(m['rooms'][r]), 512)
                 for idx_v, v in enumerate(m['rooms'][r]):
                     # features = torch.load(path_tensors + os.sep + v + '.pt', weights_only=True)
                     # features_rooms[idx_v, :] = aggregation_func(fvr[0], features)

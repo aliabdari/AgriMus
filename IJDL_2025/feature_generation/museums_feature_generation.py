@@ -56,6 +56,7 @@ if __name__ == '__main__':
     elif base_features in base_features_list[1:]:
         frame_video_room_representation = [('Mean', 'Mean', 'Mean')]
 
+    # frame_video_room_representation = [('Median', 'Mean', 'Mean'), ('Mean', 'Median', 'Mean')]
     for fvr in tqdm(frame_video_room_representation):
         path_tensors = f'{base_features}/frames'
         path_output = f'{base_features}/museums_{fvr[0]}_{fvr[1]}_{fvr[2]}'

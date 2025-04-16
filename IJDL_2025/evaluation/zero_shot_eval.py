@@ -79,9 +79,9 @@ if __name__ == '__main__':
     ground_truth = json.load(open(path_ground_truth, 'r'))
     ground_truth = create_rank(ground_truth)
 
-    base_features_list = ['open_clip_features', 'mobile_clip_features', 'blip_features']
+    base_features_list = ['open_clip_features', 'mobile_clip_features', 'clip4clip_features']
 
-    base_features = base_features_list[1:2]
+    base_features = base_features_list[:]
     print('base features', base_features)
 
     if base_features == [base_features_list[0]]:
