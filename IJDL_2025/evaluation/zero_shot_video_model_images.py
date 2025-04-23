@@ -4,17 +4,25 @@ import torch.nn.functional as F
 import json
 from evaluation_utils import get_mrr, get_rank, get_ndcg, get_recall, create_rank
 import statistics
+import numpy as np
 
 
 def provide_features(base_features, fvr):
+    queries = dict()
     if len(base_features) == 1:
         # Load Queries
         path_queries = f'../feature_generation/{base_features[0]}/frames/'
         # queries_text = [q.split('.')[0] for q in os.listdir(path_queries)]
-        queries = {q.split('.')[0] : torch.mean(torch.load(path_queries + q, weights_only=True), 0).cpu() for q in os.listdir(path_queries)}
-
+        # queries = {q.split('.')[0] : torch.mean(torch.load(path_queries + q, weights_only=True), 0).cpu() for q in os.listdir(path_queries)}
+        for q_ in os.listdir(path_queries):
+            numpy_imgs = (torch.load(path_queries + q_, weights_only=True).cpu()).numpy()
+            num_frames = numpy_imgs[0:50, :].shape[0] - 1
+            # print(num_frames)
+            selected_indices = np.linspace(0, num_frames, 32, dtype=int)
+            selected_frames = torch.from_numpy(numpy_imgs[selected_indices, :])
+            queries[q_.split('.')[0]] = torch.mean(selected_frames, 0)
         # Load Museums
-        path_museums = f'../feature_generation/{base_features[0]}/museums_{fvr[0]}_{fvr[1]}_{fvr[2]}/'
+        path_museums = f'../feature_generation/{base_features[0]}/museums_32_{fvr[0]}_{fvr[1]}_{fvr[2]}/'
         museums = [torch.load(path_museums + 'museum_' + str(m) + '.pt', weights_only=True).unsqueeze(0) for m in
                    range(len(os.listdir(path_museums)))]
     # else:
@@ -84,7 +92,8 @@ if __name__ == '__main__':
     base_features = [base_features_list[0]]
     print('base features', base_features)
 
-    video_room_representation = [('Mean', 'Mean', 'Mean'), ('Median', 'Mean', 'Mean'), ('Mean', 'Median', 'Mean')]
+    # video_room_representation = [('Mean', 'Mean', 'Mean'), ('Median', 'Mean', 'Mean'), ('Mean', 'Median', 'Mean')]
+    video_room_representation = [('Mean', 'Mean', 'Mean')]
 
     for fvr in video_room_representation:
         # Load Queries
