@@ -12,7 +12,7 @@ def get_unique_categories(museums):
 
 
 def get_ground_truth(museums, unique_categories):
-    titles = pickle.load(open('text_proc/textual_data/entire_gardening_titles_info.pkl', 'rb'))
+    titles = pickle.load(open('metadata/entire_gardening_titles_info.pkl', 'rb'))
     titles = {x['vid_id']: x['title'] for x in titles if x is not None}
     ground_truth = dict()
     for c in unique_categories:
