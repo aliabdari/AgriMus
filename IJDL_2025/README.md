@@ -17,7 +17,8 @@ In this work, in order to represent the museums, we have used different foundati
 ## Evaluation
 In this project, we make use of the  Zero Shot Approach. To reproduce the reported results in the paper, we have provided the implementations in the [evaluation](https://github.com/aliabdari/AgriMus/tree/main/IJDL_2025/evaluation) folder. 
 
-## Licence
+## License
+This project is licensed under the MIT License - see the [LICENSE]([LICENSE](https://github.com/aliabdari/AgriMus/blob/main/LICENSE)) file for details.
 
 
 
