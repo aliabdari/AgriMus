@@ -12,8 +12,10 @@ As mentioned the museums contain videos of agricultural educational information.
 The id of the used videos can be found in the prepared dataset. However, the frames of the videos which are used in different procedures of the work can be found the [extracted_frames](https://github.com/aliabdari/AgriMus/tree/main/IJDL_2025/extracted_frames) folder.
 
 ## Feature Generation
-
+In this work, in order to represent the museums, we have used different foundational models for the visual and textual representations, like Open CLIP, Mobile CLIP, Blip, Clip4Clip, VideoMAE, and ViViT. The entire implementation for obtaining the embeddings has been provided at the [feature generation](https://github.com/aliabdari/AgriMus/tree/main/IJDL_2025/feature_generation) folder.
+ 
 ## Evaluation
+In this project, we make use of the  Zero Shot Approach. To reproduce the reported results in the paper, we have provided the implementations in the [evaluation](https://github.com/aliabdari/AgriMus/tree/main/IJDL_2025/evaluation) folder. 
 
 ## Licence
 
