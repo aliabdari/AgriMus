@@ -1,6 +1,6 @@
 # IJDL 2025
 
-In this repository if for the paper under review at the "International Journal on Digital Libraries" (IJDL) journal, titled "Searching Agricultural Learning Experiences in the Metaverse via Textual and Visual Queries within the AgriMus project".
+This repository is for the paper under review at the "International Journal on Digital Libraries" (IJDL) journal, titled "Searching Agricultural Learning Experiences in the Metaverse via Textual and Visual Queries within the AgriMus project".
 
 In this work, we present a metaverse agricultural museum containing educational video content.
 
@@ -8,7 +8,14 @@ In this work, we present a metaverse agricultural museum containing educational 
 
 The dataset can be accessed through [Museums file](https://github.com/aliabdari/AgriMus/blob/main/IJDL_2025/final_museums.json).
 
-As mentioned the museums contain 
+As mentioned the museums contain videos of agricultural educational information. The videos have been obtained through the [HowTo100M](https://www.di.ens.fr/willow/research/howto100m/). 
+The id of the used videos can be found in the prepared dataset. However, the frames of the videos which are used in different procedures of the work can be found the [extracted_frames](https://github.com/aliabdari/AgriMus/tree/main/IJDL_2025/extracted_frames) folder.
+
+## Feature Generation
+
+## Evaluation
+
+## Licence
 
 
 
