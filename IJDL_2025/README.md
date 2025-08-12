@@ -1,6 +1,6 @@
 # IJDL 2025
 
-This repository is for the paper under review at the "International Journal on Digital Libraries" (IJDL) journal, titled "Searching Agricultural Learning Experiences in the Metaverse via Textual and Visual Queries within the AgriMus project".
+This repository is for the paper accepted at the [International Journal on Digital Libraries (IJDL)](https://link.springer.com/journal/799) journal, titled "Searching Agricultural Learning Experiences in the Metaverse via Textual and Visual Queries within the AgriMus project".
 
 In this work, we present a metaverse agricultural museum containing educational video content.
 
